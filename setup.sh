@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+function run () {
 
 # auto setup prezto
 if [[ ! -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -9,20 +10,20 @@ if [[ ! -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
     for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
         ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
     done
-
-    chsh -s /bin/zsh
 fi
 
 # setup zsh
-cd ~/.zprezto/runcoms
-ln -sf ./zsh/* ./
+for file in ./zsh/*
+do
+    ln -sf $(pwd)/${file} ~/.zprezto/runcoms/
+done
 
 # setup tmux
 if [ ! -e ~/.tmux ]; then
-    mkdir -p ~/.tmux/plugins
-    ln -sf ./tmux/.tmux.conf ~/.tmux.conf
-    ln -sf ./tmux/plugins ~/.tmux/plugins
+    mkdir -p ~/.tmux
 fi
+ln -sf ~/dotfiles/tmux/.tmux.conf ~/
+ln -sfn ~/dotfiles/tmux/plugins ~/.tmux/plugins
 
 # setup neovim
 if [ ! -e ~/.config/nvim ]; then
@@ -31,5 +32,21 @@ fi
 if [ ! -e ~/.cache ]; then
     mkdir -p ~/.cache
 fi
-cd ~/.config/nvim
-ln -sf ./nvim/* ./
+for file in ./nvim/*
+do
+    ln -sf $(pwd)/${file} ~/.config/
+done
+
+}
+
+
+# output onfirmation message
+echo "I will overwrite the existing dotfiles, but is it okay? [Y/n]"
+read ANSWER
+
+case $ANSWER in
+    "" | "Y" | "y" | "yes" | "Yes" | "YES" ) run;;
+    * ) echo "Operation stopped";;
+esac
+
+
