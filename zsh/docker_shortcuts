@@ -1,0 +1,26 @@
+
+# --------------------------
+# Docker alias and function
+# --------------------------
+
+# Run temporary container to mount Data Volume Container
+# e.g., $ drt Data-Vol-Con ubuntu
+drt() { docker run --rm -i -t --volumes-from $1 $2; }
+
+# Run bash into running container
+dba() { docker exec -i -t $1 /bin/bash; }
+
+# Run zsh into running container
+dzsh() { docker exec -i -t $1 /bin/zsh; }
+
+# Remove all images
+drmi() { docker rmi $(docker images -q); }
+
+# Display formatted docker's containers list only (ID  NAME  STATUS)
+alias dps="docker ps --format 'table {{.ID}}\t{{.Names}}\t{{.Status}}'"
+
+# Remove all volumes
+drmv() { docker volume rm $(docker volume -a -q); }
+
+# Creanup volumes that don't referred
+dvcu() { docker volume rm $(docker volume ls -qf dangling=true); }

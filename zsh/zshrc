@@ -18,4 +18,5 @@ export XDG_CONFIG_HOME=~/.config
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
-
+# import docker aliases
+source ~/dotfiles/zsh/docker_shortcuts
