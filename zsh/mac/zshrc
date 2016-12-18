@@ -1,0 +1,14 @@
+# load common setting
+source ~/dotfiles/zsh/common/zshrc
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# trash
+alias rm="trash"
+
+# neovim alias
+alias vi="nvim"
+alias vim="nvim"

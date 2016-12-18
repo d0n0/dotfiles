@@ -3,7 +3,9 @@
 
 run() {
 
-    # auto setup prezto
+    # setup zsh -----------------------------------------------------------------
+
+    # auto install prezto
     if [[ ! -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
         git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
@@ -15,13 +17,32 @@ run() {
         done
     fi
 
-    # setup zsh
-    for file in ./zsh/*
+
+    # zshrc
+    for file in ~/dotfiles/zsh/common/*
     do
-        ln -sf $(pwd)/${file} ~/.zprezto/runcoms/
+        ln -sf ${file} ~/.zprezto/runcoms/
     done
 
-    # setup tmux
+    case ${OSTYPE} in
+        darwin*)
+            for file in ~/dotfiles/zsh/mac/*
+            do
+                ln -sf ${file} ~/.zprezto/runcoms/
+            done
+            ;;
+        linux*)
+            for file in ~/dotfiles/zsh/linux/*
+            do
+                ln -sf ${file} ~/.zprezto/runcoms/
+            done
+            ;;
+    esac
+    # end -----------------------------------------------------------------------
+
+
+
+    # setup tmux ----------------------------------------------------------------
     if [ ! -e ~/.tmux/ ]; then
         mkdir -p ~/.tmux
     fi
@@ -34,8 +55,11 @@ run() {
             ;;
     esac
     ln -sfn ~/dotfiles/tmux/plugins ~/.tmux/plugins
+    # end -----------------------------------------------------------------------
 
-    # setup neovim
+
+
+    # setup neovim --------------------------------------------------------------
     if [ ! -e ~/.config/nvim/ ]; then
         mkdir -p ~/.config/nvim/
     fi
@@ -54,10 +78,11 @@ run() {
             ln -sf ~/dotfiles/nvim/init.vim.linux ~/.config/nvim/init.vim
             ;;
     esac
+    # end ---------------------------------------------------------------------
 
 }
 
-# output onfirmation message
+# output confirmation message
 echo "I will overwrite the existing dotfiles, but is it okay? [Y/n]"
 read ANSWER
 

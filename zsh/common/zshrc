@@ -12,11 +12,16 @@ fi
 
 # Customize to your needs...
 
+
+# ------------------------------------------------------
+
 export XDG_CONFIG_HOME=~/.config
 
-# aliases
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
 
-# import docker aliases
-source ~/dotfiles/zsh/docker_shortcuts
+# pyenv
+export PYENV_ROOT=${HOME}/.pyenv
+export PATH=${PYENV_ROOT}/bin:$PATH
+eval "$(pyenv init -)"
+
+# docker-shortcut
+source ~/dotfiles/zsh/common/docker_shortcuts
