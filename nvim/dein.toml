@@ -28,8 +28,8 @@ hook_post_source = '''
 repo = 'itchyny/lightline.vim'
 hook_add = '''
 let g:lightline = {
-    \   'colorscheme': 'wombat'
-        \}
+    \   'colorscheme': 'wombat',
+    \ }
 '''
 
 [[plugins]] # hybrid
@@ -51,3 +51,6 @@ hook_source = '''
     let g:deoplete#enable_ignore_case = 1
     let g:deoplete#enable_smart_case = 1
 '''
+
+[[plugins]] # カッコ自動整形
+repo = 'itmammoth/doorboy.vim'

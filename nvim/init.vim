@@ -70,10 +70,8 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-" set clipboard+=unnamedplus
+
+" terminal emulator
+set sh=zsh
 
 inoremap <silent> jj <esc> 
-inoremap { {}<left>
-inoremap {<enter> {}<left><cr><esc><s-o>
-inoremap ( ()<esc>i
-inoremap (<enter> ()<left><cr><esc><s-o>

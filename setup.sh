@@ -8,15 +8,11 @@ run() {
     # auto install prezto
     if [[ ! -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
         git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-
-
-
         setopt EXTENDED_GLOB
         for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
             ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
         done
     fi
-
 
     # zshrc
     for file in ~/dotfiles/zsh/common/*
@@ -82,11 +78,12 @@ run() {
 
 }
 
+
 # output confirmation message
 echo "I will overwrite the existing dotfiles, but is it okay? [Y/n]"
 read ANSWER
 
 case $ANSWER in
-    "" | "Y" | "y" | "yes" | "Yes" | "YES" ) run;;
+    "Y" | "y" | "yes" | "Yes" | "YES" ) run;;
     * ) echo "Operation stopped";;
 esac

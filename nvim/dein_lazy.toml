@@ -1,4 +1,4 @@
-# Lang
+#Lang
 
 [[plugins]] # Html5
 repo  = 'othree/html5.vim'
@@ -84,10 +84,17 @@ on_event = 'TextYankPost'
 [[plugins]]
 repo = 'zchee/deoplete-clang'
 hook_source = '''
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang-3.8.so.1'
-let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
+    let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang-3.8.so.1'
+    let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
 '''
 
 on_ft = ['c', 'cpp', 'cmake']
 depends = ['deoplete.nvim']
 
+[[plugins]]
+repo = 'vimlab/split-term.vim'
+on_cmd = ['Term','VTerm']
+hook_source = '''
+    set splitbelow
+    set splitright
+'''
