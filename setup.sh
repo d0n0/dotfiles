@@ -62,9 +62,9 @@ run() {
     if [ ! -e ~/.cache/ ]; then
         mkdir -p ~/.cache
     fi
-    for file in ./nvim/*.toml
+    for file in ~/dotfiles/nvim/*.toml
     do
-        ln -sf $(pwd)/${file} ~/.config/nvim/
+        ln -sf ${file} ~/.config/nvim/
     done
     case ${OSTYPE} in
         darwin*)
