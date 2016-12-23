@@ -54,3 +54,6 @@ hook_source = '''
 
 [[plugins]] # カッコ自動整形
 repo = 'itmammoth/doorboy.vim'
+
+[[plugins]]
+repo = 'scrooloose/syntastic.git'

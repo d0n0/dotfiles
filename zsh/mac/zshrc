@@ -12,3 +12,7 @@ alias rm="trash"
 # neovim alias
 alias vi="nvim"
 alias vim="nvim"
+
+# golang
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH/bin
