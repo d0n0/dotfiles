@@ -19,6 +19,20 @@ hook_source = '''
     inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 '''
 
+[[plugins]] # シンタックスチェック
+repo = 'neomake/neomake'
+on_path = '.*'
+hook_add = '''
+    autocmd! BufWritePost * Neomake
+'''
+hook_source = '''
+    let g:neomake_javascript_enabled_makers = ['eslint']
+    let g:neomake_highlight_lines = 0
+    let g:neomake_highlight_columns = 0
+    let g:neomake_error_sign = {'text': '>>', 'texthl': 'DiffDelete'}
+    let g:neomake_warning_sign = {'text': '>>', 'texthl': 'Todo'}
+'''
+
 [[plugins]] # Html5
 repo  = 'othree/html5.vim'
 on_ft = 'html'
@@ -44,13 +58,14 @@ on_ft = ['javascript']
 repo = 'heavenshell/vim-jsdoc'
 on_ft = ['javascript']
 
-[[plugins]] # javascript-syntax
+[[plugins]] # javascript-syntaxhighlight
 repo = 'othree/yajs.vim'
 on_ft = ['javascript']
 
-[[plugins]] # ESLint
-repo = 'benjie/neomake-local-eslint.vim'
-on_ft = ['javascript']
+#[[plugins]] # ローカルインストールしたESLintを使うためのプラグイン
+#repo = 'benjie/neomake-local-eslint.vim'
+#on_ft = ['javascript']
+#on_cmd = ['EnableESLint']
 
 [[plugins]]
 repo = 'zchee/deoplete-clang'

@@ -64,12 +64,27 @@ set hidden
 set history=2000
 set title
 set showmatch
-set autoindent
-set tabstop=4
-set shiftwidth=4
-set expandtab
 
 set splitright
 set splitbelow
 
+""""""""""""""""""""
+"   インデント
+""""""""""""""""""""
+set autoindent        " 改行時に前の行のインデントを計測
+set smartindent       " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
+set smarttab          " 新しい行を作った時に高度な自動インデントを行う
+set expandtab         " タブ入力を複数の空白に置き換える
+
+set shiftwidth=4      " 自動インデントで入る空白数
+set tabstop=4         " タブを含むファイルを開いた際、タブを何文字の空白に変換するか
+set softtabstop=4     " キーボードから入るタブの数
+
+autocmd FileType c           setlocal sw=4 sts=4 ts=4 et
+autocmd FileType javascript  setlocal sw=2 sts=2 ts=2 et
+autocmd FileType zsh         setlocal sw=2 sts=2 ts=2 et
+autocmd FileType html        setlocal sw=2 sts=2 ts=2 et
+
 inoremap <silent> jj <esc> 
+
+command! EnableESLint echo 'enabled'
