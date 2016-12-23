@@ -1,4 +1,23 @@
-#Lang
+[[plugins]] # 補完
+repo = 'Shougo/deoplete.nvim'
+if = 'has("python3")'
+depends = 'context_filetype.vim'
+on_event = 'InsertEnter'
+hook_source = '''
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#enable_ignore_case = 1
+    let g:deoplete#enable_smart_case = 1
+
+    " <TAB>: completion.
+    imap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : deoplete#mappings#manual_complete()
+    function! s:check_back_space() abort
+        let col = col('.') - 1
+        return !col || getline('.')[col - 1]  =~ '\s'
+    endfunction
+
+    " <S-TAB>: completion back.
+    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+'''
 
 [[plugins]] # Html5
 repo  = 'othree/html5.vim'
@@ -15,6 +34,64 @@ hook_add = '''
     let g:vim_markdown_frontmatter = 1
     let g:vim_markdown_math = 1
 '''
+
+# javascript
+[[plugins]]
+repo = 'pangloss/vim-javascript'
+on_ft = ['javascript']
+
+[[plugins]] # jsdoc
+repo = 'heavenshell/vim-jsdoc'
+on_ft = ['javascript']
+
+[[plugins]] # javascript-syntax
+repo = 'othree/yajs.vim'
+on_ft = ['javascript']
+
+[[plugins]] # ESLint
+repo = 'benjie/neomake-local-eslint.vim'
+on_ft = ['javascript']
+
+[[plugins]]
+repo = 'zchee/deoplete-clang'
+hook_source = '''
+    if has('mac')
+        let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+        let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
+    endif
+'''
+on_ft = ['c','cpp','cmake']
+depends = ['deoplete.nvim']
+
+[[plugins]] # Golang
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_source = '''
+    au FileType go nmap <leader>r <Plug>(go-run-split)
+    au FileType go nmap <leader>b <Plug>(go-build)
+    au FileType go nmap <leader>t <Plug>(go-test)
+    au FileType go nmap <leader>c <Plug>(go-coverage)
+
+    au FileType go :highlight goErr cterm=bold ctermfg=214
+    au FileType go :match goErr /\<err\>/
+
+    let g:go_highlight_functions = 1
+    let g:go_highlight_methods = 1
+    let g:go_highlight_structs = 1
+
+    let g:go_fmt_command = "goimports"
+    let s:goargs = go#package#ImportPath(expand('%:p:h'))
+
+    let g:neomake_go_errcheck_maker = {
+    \ 'args': ['-abspath', s:goargs],
+    \ 'append_file': 0,
+    \ 'errorformat': '%f:%l:%c:\ %m, %f:%l:%c\ %#%m',
+    \ }
+
+    let g:neomake_go_enabled_makers = ['golint', 'govet', 'errcheck']
+    let g:go_list_type = "quickfix"
+'''
+
 
 [[plugins]] # Japanese doc
 repo = 'vim-jp/vimdoc-ja'
@@ -52,60 +129,6 @@ hook_source = '''
 [[plugins]] # EditorConfig
 repo = 'editorconfig/editorconfig-vim'
 on_path = '.*'
-
-[[plugins]] # 補完
-repo = 'Shougo/deoplete.nvim'
-if = 'has("python3")'
-depends = 'context_filetype.vim'
-on_event = 'InsertEnter'
-hook_source = '''
-    let g:deoplete#enable_at_startup = 1
-    let g:deoplete#enable_ignore_case = 1
-    let g:deoplete#enable_smart_case = 1
-
-    " <TAB>: completion.
-    imap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : deoplete#mappings#manual_complete()
-    function! s:check_back_space() abort
-        let col = col('.') - 1
-        return !col || getline('.')[col - 1]  =~ '\s'
-    endfunction
-
-    " <S-TAB>: completion back.
-    inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-'''
-
-[[plugins]]
-repo = 'zchee/deoplete-clang'
-hook_source = '''
-    if has('mac')
-        let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
-        let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
-    endif
-'''
-on_ft = ['c','cpp','cmake']
-depends = ['deoplete.nvim']
-
-[[plugins]] # Golang
-repo = 'fatih/vim-go'
-on_ft = 'go'
-hook_source = '''
-    au FileType go nmap <leader>r <Plug>(go-run-split)
-    au FileType go nmap <leader>b <Plug>(go-build)
-    au FileType go nmap <leader>t <Plug>(go-test)
-    au FileType go nmap <leader>c <Plug>(go-coverage)
-
-    au FileType go :highlight goErr cterm=bold ctermfg=214
-    au FileType go :match goErr /\<err\>/
-
-    let g:go_highlight_functions = 1
-    let g:go_highlight_methods = 1
-    let g:go_highlight_structs = 1
-    let g:go_fmt_command = "goimports"
-
-    let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-    let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-    let g:go_list_type = "quickfix"
-'''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'

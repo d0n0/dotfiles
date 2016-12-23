@@ -16,3 +16,6 @@ alias vim="nvim"
 # golang
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
+
+# nodebrew
+export PATH=$PATH:$HOME/.nodebrew/current/bin
