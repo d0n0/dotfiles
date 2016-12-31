@@ -24,19 +24,14 @@ hook_post_source = '''
 [[plugins]] # カーソルの位置のコンテキストのftを判定するライブラリ
 repo = 'Shougo/context_filetype.vim'
 
-[[plugins]] # ステータスライン
-repo = 'itchyny/lightline.vim'
-hook_add = '''
-let g:lightline = {
-    \   'colorscheme': 'wombat',
-    \ }
-'''
+[[plugins]] # 言語毎のsyntaxやらインデントやらをいい感じにしてくれる
+repo = 'sheerun/vim-polyglot'
 
 [[plugins]] # hybrid-colorscheme
 repo = 'w0ng/vim-hybrid'
 
-[[plugins]] # solarized-colorscheme
-repo = 'altercation/vim-colors-solarized'
+[[plugins]] # onedark-colorscheme
+repo = 'joshdick/onedark.vim'
 
 [[plugins]] # vim-commentary
 repo = 'tpope/vim-commentary'
@@ -55,5 +50,64 @@ hook_source = '''
     let g:deoplete#enable_smart_case = 1
 '''
 
-[[plugins]] # カッコ自動整形
+[[plugins]] # カッコ自動補完
 repo = 'itmammoth/doorboy.vim'
+
+[[plugins]] # git
+repo = 'tpope/vim-fugitive'
+
+[[plugins]] # ステータスライン
+repo = 'itchyny/lightline.vim'
+hook_add = '''
+let g:lightline = {
+    \ 'colorscheme': 'onedark',
+    \ 'active': {
+    \     'left': [ [ 'mode', 'paste' ],
+    \             [ 'fugitive', 'filename' ] ]
+    \ },
+    \ 'component_function': {
+    \     'fugitive': 'LightlineFugitive',
+    \     'readonly': 'LightlineReadonly',
+    \     'modified': 'LightlineModified',
+    \     'filename': 'LightlineFilename'
+    \ },
+    \     'separator': { 'left': '', 'right': '' },
+    \     'subseparator': { 'left': '', 'right': '' }
+    \ }
+
+function! LightlineModified()
+    if &filetype == "help"
+    return ""
+    elseif &modified
+    return "+"
+    elseif &modifiable
+    return ""
+    else
+    return ""
+    endif
+endfunction
+
+function! LightlineReadonly()
+    if &filetype == "help"
+    return ""
+    elseif &readonly
+    return ""
+    else
+    return ""
+    endif
+endfunction
+
+function! LightlineFugitive()
+    if exists('*fugitive#head')
+        let branch = fugitive#head()
+        return branch !=# '' ? ' '.branch : ''
+    endif
+    return ''
+endfunction
+
+function! LightlineFilename()
+    return ('' != LightlineReadonly() ? LightlineReadonly() . ' ' : '') .
+    \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+    \ ('' != LightlineModified() ? ' ' . LightlineModified() : '')
+endfunction
+'''

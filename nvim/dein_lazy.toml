@@ -7,12 +7,12 @@ hook_source = '''
     let g:deoplete#enable_at_startup = 1
 '''
 
-[[plugins]] # deoplete node.js補完(tern)
+[[plugins]] # deoplete node.js補完(tern)  require: tern
 repo = 'carlitux/deoplete-ternjs'
 if = 'has("python3")'
-depends = ['deoplete.nvim']
+depends = 'deoplete.nvim'
 on_ft = ['javascript','jsx','vue']
-hook_add = '''
+hook_post_update = '''
     let cmd = 'npm install -g tern'
     let g:dein#plugin.build = cmd
 '''
@@ -29,7 +29,7 @@ hook_source = '''
 
 [[plugins]] # deoplete C/C++補完
 repo = 'zchee/deoplete-clang'
-depends = ['deoplete.nvim']
+depends = 'deoplete.nvim'
 hook_source = '''
     if has('mac')
         let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
@@ -164,7 +164,7 @@ depends = 'denite.nvim'
 on_event = 'TextYankPost'
 
 on_ft = ['c', 'cpp', 'cmake']
-depends = ['deoplete.nvim']
+depends = 'deoplete.nvim'
 
 [[plugins]]
 repo = 'vimlab/split-term.vim'

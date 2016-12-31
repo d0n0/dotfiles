@@ -42,15 +42,18 @@ run() {
     if [ ! -e ~/.tmux/ ]; then
         mkdir -p ~/.tmux
     fi
-    case ${OSTYPE} in
-        darwin*)
-            ln -sf ~/dotfiles/tmux/.tmux.conf.macos ~/.tmux.conf
-            ;;
-        linux*)
-            ln -sf ~/dotfiles/tmux/.tmux.conf.linux ~/.tmux.conf
-            ;;
-    esac
+    ln -sf ~/dotfiles/tmux/.tmux.conf ~/
     ln -sfn ~/dotfiles/tmux/plugins ~/.tmux/plugins
+
+    # case ${OSTYPE} in
+    #     darwin*)
+    #         ln -sf ~/dotfiles/tmux/.tmux.conf.macos ~/.tmux.conf
+    #         ;;
+    #     linux*)
+    #         ln -sf ~/dotfiles/tmux/.tmux.conf.linux ~/.tmux.conf
+    #         ;;
+    # esac
+
     # end -----------------------------------------------------------------------
 
 

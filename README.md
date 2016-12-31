@@ -3,6 +3,7 @@
 ## Require
 - zsh
 - git
+- Cica(font)
 
 ## Note
 - Only for mac or linux
