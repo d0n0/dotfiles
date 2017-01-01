@@ -42,7 +42,7 @@ run() {
     if [ ! -e ~/.tmux/ ]; then
         mkdir -p ~/.tmux
     fi
-    ln -sf ~/dotfiles/tmux/.tmux.conf ~/
+    ln -sf ~/dotfiles/tmux/conf/tmux.conf ~/.tmux.conf
     ln -sfn ~/dotfiles/tmux/plugins ~/.tmux/plugins
 
     # case ${OSTYPE} in

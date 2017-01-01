@@ -19,3 +19,11 @@ export XDG_CONFIG_HOME=~/.config
 
 # docker-shortcut
 source ~/dotfiles/zsh/common/docker_shortcuts
+
+# tmux scripts
+export PATH=$PATH:~/dotfiles/tmux/scripts
+
+# ディレクトリ移動後の処理
+function chpwd() {
+  echo $PWD | sed -e "s|$HOME|~|" >! ~/dotfiles/tmux/scripts/tmp/pwd.tmp
+}

@@ -49,6 +49,7 @@ set guifont=CicaE-Regular:h17
 if (has("termguicolors"))
   set termguicolors
 endif
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 colorscheme onedark
 
 " 不可視文字表示
