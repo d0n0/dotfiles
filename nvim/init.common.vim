@@ -8,13 +8,11 @@ endif
 let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-" auto install
-if &runtimepath !~# '/dein.vim'
-  if !isdirectory(s:dein_repo_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-  endif
-  execute 'set runtimepath^=' . fnamemodify(s:dein_repo_dir, ':p')
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
 endif
+
+execute 'set runtimepath^=' . s:dein_repo_dir
 
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
@@ -22,7 +20,7 @@ if dein#load_state(s:dein_dir)
   " toml
   let g:rc_dir      = expand('~/.config/nvim')
   let s:toml        = g:rc_dir . '/dein.toml'
-  let s:lazy_toml   = g:rc_dir . '/dein_lazy.toml'
+  let s:lazy_toml   = g:rc_dir . '/deinlazy.toml'
 
   call dein#load_toml(s:toml,      {'lazy': 0})
   call dein#load_toml(s:lazy_toml, {'lazy': 1})
@@ -43,7 +41,7 @@ endif
 "End dein Scripts-------------------------
 
 " font
-set guifont=CicaE-Regular:h17
+" set guifont=CicaE-Regular:h18
 
 " colorscheme
 if (has("termguicolors"))

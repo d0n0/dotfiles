@@ -45,15 +45,6 @@ run() {
     ln -sf ~/dotfiles/tmux/conf/tmux.conf ~/.tmux.conf
     ln -sfn ~/dotfiles/tmux/plugins ~/.tmux/plugins
 
-    # case ${OSTYPE} in
-    #     darwin*)
-    #         ln -sf ~/dotfiles/tmux/.tmux.conf.macos ~/.tmux.conf
-    #         ;;
-    #     linux*)
-    #         ln -sf ~/dotfiles/tmux/.tmux.conf.linux ~/.tmux.conf
-    #         ;;
-    # esac
-
     # end -----------------------------------------------------------------------
 
 
@@ -71,10 +62,10 @@ run() {
     done
     case ${OSTYPE} in
         darwin*)
-            ln -sf ~/dotfiles/nvim/init.vim.macos ~/.config/nvim/init.vim
+            ln -sf ~/dotfiles/nvim/init.macos.vim ~/.config/nvim/init.vim
             ;;
         linux*)
-            ln -sf ~/dotfiles/nvim/init.vim.linux ~/.config/nvim/init.vim
+            ln -sf ~/dotfiles/nvim/init.linux.vim ~/.config/nvim/init.vim
             ;;
     esac
     # end ---------------------------------------------------------------------

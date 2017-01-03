@@ -25,5 +25,7 @@ export PATH=$PATH:~/dotfiles/tmux/scripts
 
 # ディレクトリ移動後の処理
 function chpwd() {
-  echo $PWD | sed -e "s|$HOME|~|" >! ~/dotfiles/tmux/scripts/tmp/pwd.tmp
+  if [ -e ~/dotfiles/tmux/scripts/tmp/pwd.tmp ]; then
+    echo $PWD | sed -e "s|$HOME|~|" >! ~/dotfiles/tmux/scripts/tmp/pwd.tmp
+  fi
 }
