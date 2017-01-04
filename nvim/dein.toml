@@ -4,15 +4,6 @@ repo = 'Shougo/dein.vim'
 [[plugins]] # カーソルの位置のコンテキストのftを判定するライブラリ
 repo = 'Shougo/context_filetype.vim'
 
-[[plugins]] # 言語毎のsyntaxやらインデントやらをいい感じにしてくれる
-repo = 'sheerun/vim-polyglot'
-# hook_add = '''
-#   let g:polyglot_disabled = ['javascript']
-# '''
-
-[[plugins]] # hybrid-colorscheme
-repo = 'w0ng/vim-hybrid'
-
 [[plugins]] # onedark-colorscheme
 repo = 'joshdick/onedark.vim'
 
@@ -25,11 +16,14 @@ repo = 'tpope/vim-surround'
 [[plugins]] # カッコ自動補完
 repo = 'itmammoth/doorboy.vim'
 
-[[plugins]] # git
-repo = 'tpope/vim-fugitive'
-
 [[plugins]] # ステータスライン
 repo = 'itchyny/lightline.vim'
 hook_add = '''
-  source ~/dotfiles/nvim/plugins/lightline.rc.vim
+  source ~/dotfiles/nvim/rc/plugins/lightline.rc.vim
+'''
+
+[[plugins]] # 軽量ファイラ
+repo = 'justinmk/vim-dirvish'
+hook_add = '''
+  source ~/dotfiles/nvim/rc/plugins/vim-dirvish.rc.vim
 '''

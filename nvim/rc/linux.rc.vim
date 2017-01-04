@@ -1,3 +1,3 @@
 " load common setting
-source ~/dotfiles/nvim/init.common.vim
+source ~/dotfiles/nvim/common.rc.vim
 " ------------------------------------------------------------

@@ -1,44 +1,7 @@
-"dein Scripts-----------------------------
+" load dein.rc.vim
+source ~/dotfiles/nvim/rc/plugins/dein.rc.vim
+" -----------------------------------------------------
 
-if &compatible
-  set nocompatible               " Be iMproved
-endif
-
-" Required:
-let s:dein_dir = expand('~/.cache/dein')
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-if !isdirectory(s:dein_repo_dir)
-  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-endif
-
-execute 'set runtimepath^=' . s:dein_repo_dir
-
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-
-  " toml
-  let g:rc_dir      = expand('~/.config/nvim')
-  let s:toml        = g:rc_dir . '/dein.toml'
-  let s:lazy_toml   = g:rc_dir . '/deinlazy.toml'
-
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-" Required:
-filetype plugin indent on
-syntax enable
-
-" If you want to install not installed plugins on startup.
-if dein#check_install()
-  call dein#install()
-endif
-
-"End dein Scripts-------------------------
 
 " font
 " set guifont=CicaE-Regular:h18
@@ -90,9 +53,7 @@ set noshowmode      " lightline.vimを使うため、モード非表示
 
 
 
-"""""""""""""""""""""""
 "  インデント関連設定
-"""""""""""""""""""""""
 set autoindent      " 改行時に前の行のインデントを計測
 set smartindent     " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set smarttab        " 新しい行を作った時に高度な自動インデントを行う

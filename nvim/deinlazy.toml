@@ -1,36 +1,6 @@
-# ファイル操作系 --------------------------------------------------
-[[plugins]] # Denite
-repo = 'Shougo/denite.nvim'
-on_cmd = 'Denite'
-hook_source = '''
-  source ~/dotfiles/nvim/plugins/denite.rc.vim
-'''
-
-[[plugins]] # nerdtree
-repo = 'scrooloose/nerdtree'
-on_cmd = 'NERDTreeToggle'
-depends = ['vim-devicons','vim-nerdtree-syntax-highlight']
-hook_add = '''
-  map <C-n> :NERDTreeToggle<CR>
-'''
-hook_source = '''
-  source ~/dotfiles/nvim/plugins/nerdtree.rc.vim
-'''
-
 [[plugins]] # devicons
 repo = 'ryanoasis/vim-devicons'
-hook_source = '''
-  source ~/dotfiles/nvim/plugins/vim-devicons.rc.vim
-'''
 
-[[plugins]] # NERDTree syntax highlight
-repo = 'tiagofumo/vim-nerdtree-syntax-highlight'
-hook_source = '''
-  source ~/dotfiles/nvim/plugins/vim-nerdtree-syntax-highlight.rc.vim
-'''
-# -----------------------------------------------------------------
-
-# 入力補完 --------------------------------------------------------
 [[plugins]] # deoplete
 repo = 'Shougo/deoplete.nvim'
 if = 'has("python3")'
@@ -40,29 +10,6 @@ hook_source = '''
   let g:deoplete#enable_at_startup = 1
 '''
 
-[[plugins]] # deoplete node.js補完(tern)
-repo = 'carlitux/deoplete-ternjs'
-if = 'has("python3")'
-depends = 'deoplete.nvim'
-on_ft = ['javascript','jsx','vue']
-hook_post_update = '''
-  let cmd = 'npm install -g tern'
-  let g:dein#plugin.build = cmd
-'''
-hook_source = '''
-  source ~/dotfiles/nvim/plugins/deoplete-ternjs.rc.vim
-'''
-
-[[plugins]] # deoplete C/C++補完
-repo = 'zchee/deoplete-clang'
-depends = 'deoplete.nvim'
-hook_source = '''
-  source ~/dotfiles/nvim/plugins/deoplete-clang.rc.vim
-'''
-on_ft = ['c','cpp','cmake']
-# -----------------------------------------------------------------
-
-# シンタックスハイライト系 ----------------------------------------
 [[plugins]] # シンタックスチェックフレームワーク
 repo = 'neomake/neomake'
 on_path = '.*'
@@ -70,43 +17,7 @@ hook_add = '''
     autocmd! BufWritePost * Neomake
 '''
 hook_source = '''
-  source ~/dotfiles/nvim/plugins/neomake.rc.vim
-'''
-
-[[plugins]] # Html5
-repo  = 'othree/html5.vim'
-on_ft = 'html'
-
-[[plugins]] # Toml
-repo  = 'cespare/vim-toml'
-on_ft = 'toml'
-
-[[plugins]] # Markdown
-repo = 'rcmdnk/vim-markdown'
-on_ft = ['markdown','mkd']
-hook_add = '''
-    let g:vim_markdown_frontmatter = 1
-    let g:vim_markdown_math = 1
-'''
-
-[[plugins]] # jsdoc
-repo = 'heavenshell/vim-jsdoc'
-on_ft = ['javascript']
-
-[[plugins]] # javascript-syntaxhighlight
-repo = 'othree/yajs.vim'
-on_ft = ['javascript']
-
-[[plugins]] # ローカルインストールしたESLintを使うためのプラグイン
-repo = 'benjie/neomake-local-eslint.vim'
-on_ft = ['javascript']
-on_cmd = ['EnableESLint']
-
-[[plugins]] # Golang
-repo = 'fatih/vim-go'
-on_ft = 'go'
-hook_source = '''
-  source ~/dotfiles/nvim/plugins/vim-go.rc.vim
+  source ~/dotfiles/nvim/rc/plugins/neomake.rc.vim
 '''
 
 [[plugins]] # Japanese doc
@@ -120,6 +31,12 @@ hook_add = '''
 repo = 'koron/codic-vim'
 on_cmd = 'Codic'
 
+[[plugins]] # git操作
+repo = 'tpope/vim-fugitive'
+on_cmd = ['Gstatus','Gwrite','Gread','Gmove',
+          'Gremoe','Gcommit','Gblame','Gdiff',
+          'Glcd','Gcd','Git','Git!','Ggrep','Glog']
+
 [[plugins]] # vim-gista
 repo = 'lambdalisue/vim-gista'
 on_cmd = 'Gista'
@@ -131,25 +48,8 @@ hook_source = '''
 repo = 'mattn/emmet-vim'
 on_i = 1
 hook_source = '''
-  source ~/dotfiles/nvim/plugins/emmet-vim.rc.vim
+  source ~/dotfiles/nvim/rc/plugins/emmet-vim.rc.vim
 '''
-
-# 不必要
-# [[plugins]] # EditorConfig
-# repo = 'editorconfig/editorconfig-vim'
-# on_path = '.*'
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-depends = 'denite.nvim'
-on_path = '.*'
-
-[[plugins]]
-repo = 'Shougo/neoyank.vim'
-depends = 'denite.nvim'
-on_event = 'TextYankPost'
-on_ft = ['c', 'cpp', 'cmake']
-depends = 'deoplete.nvim'
 
 [[plugins]]
 repo = 'vimlab/split-term.vim'
@@ -159,30 +59,70 @@ hook_source = '''
   set splitright
 '''
 
+[[plugins]] # deoplete node.js補完(tern)
+repo = 'carlitux/deoplete-ternjs'
+if = 'has("python3")'
+depends = 'deoplete.nvim'
+on_ft = ['javascript','jsx','vue']
+hook_post_update = '''
+  let cmd = 'npm install -g tern'
+  let g:dein#plugin.build = cmd
+'''
+hook_source = '''
+  source ~/dotfiles/nvim/rc/plugins/deoplete-ternjs.rc.vim
+'''
+
+[[plugins]] # deoplete C/C++補完
+repo = 'zchee/deoplete-clang'
+depends = 'deoplete.nvim'
+hook_source = '''
+  source ~/dotfiles/nvim/rc/plugins/deoplete-clang.rc.vim
+'''
+on_ft = ['c','cpp','cmake']
+
+[[plugins]] # Html5
+repo  = 'othree/html5.vim'
+on_ft = 'html'
+
+[[plugins]] # Toml
+repo  = 'cespare/vim-toml'
+on_ft = 'toml'
+
+[[plugins]] # Markdown
+repo = 'plasticboy/vim-markdown'
+on_ft = ['markdown','mkd']
+hook_source = '''
+    let g:vim_markdown_frontmatter = 1
+    let g:vim_markdown_math = 1
+'''
+
+[[plugins]] # jsdoc
+repo = 'heavenshell/vim-jsdoc'
+on_ft = ['javascript']
+
+[[plugins]] # javascript-syntaxhighlight
+repo = 'othree/yajs.vim'
+on_ft = ['javascript']
+
+[[plugins]] # Go development plugin
+repo = 'fatih/vim-go'
+on_ft = 'go'
+hook_source = '''
+  source ~/dotfiles/nvim/rc/plugins/vim-go.rc.vim
+'''
+
+# [[plugins]] # ローカルインストールしたESLintを使うためのプラグイン
+# repo = 'benjie/neomake-local-eslint.vim'
+# on_ft = ['javascript']
+# on_cmd = ['EnableESLint']
+
+# [[plugins]] # EditorConfig
+# repo = 'editorconfig/editorconfig-vim'
+# on_path = '.*'
+
 # [[plugins]] # tmuxのステータスラインをプリセットを生成
 # repo = 'edkolev/tmuxline.vim'
 # cmd = 'Tmuxline'
 # hook_add = '''
-# let g:tmuxline_preset = {
-#       \ 'a'    : '#S',
-#       \ 'b'    : '#(cat ~/dotfiles/tmux/scripts/tmp/pwd.tmp)',
-#       \ 'c'    : '',
-#       \ 'win'  : '#I #W',
-#       \ 'cwin' : '#I #W',
-#       \ 'x'    : '%Y-%m-%d(%a) %R#(display_period.sh)',
-#       \ 'y'    : '#(whoami)',
-#       \ 'z'    : '#h'}
-# '''
-# [[plugins]] # tmuxのステータスラインをプリセットを生成
-# repo = 'edkolev/tmuxline.vim'
-# hook_add = '''
-# let g:tmuxline_preset = {
-#       \ 'a'    : '#S',
-#       \ 'b'    : '#(cat ~/dotfiles/tmux/scripts/tmp/pwd.tmp)',
-#       \ 'c'    : '',
-#       \ 'win'  : '#I #W',
-#       \ 'cwin' : '#I #W',
-#       \ 'x'    : '%Y-%m-%d(%a) %R#(display_period.sh)',
-#       \ 'y'    : '#(whoami)',
-#       \ 'z'    : '#h'}
+#   source ~/dotfiles/nvim/rc/plugins/tmuxline.rc.vim
 # '''

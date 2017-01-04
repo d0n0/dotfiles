@@ -1,5 +1,5 @@
 " load common setting
-source ~/dotfiles/nvim/init.common.vim
+source ~/dotfiles/nvim/rc/common.rc.vim
 " ------------------------------------------------------------
 
 " python3 support
