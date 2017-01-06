@@ -60,14 +60,7 @@ run() {
     do
         ln -sf ${file} ~/.config/nvim/
     done
-    case ${OSTYPE} in
-        darwin*)
-            ln -sf ~/dotfiles/nvim/init.macos.vim ~/.config/nvim/init.vim
-            ;;
-        linux*)
-            ln -sf ~/dotfiles/nvim/init.linux.vim ~/.config/nvim/init.vim
-            ;;
-    esac
+    ln -sf ~/dotfiles/nvim/init.vim ~/.config/nvim/
     # end ---------------------------------------------------------------------
 
     # setup tern --------------------------------------------------------------
