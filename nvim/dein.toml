@@ -27,3 +27,6 @@ repo = 'justinmk/vim-dirvish'
 hook_add = '''
   source ~/dotfiles/nvim/rc/plugins/vim-dirvish.rc.vim
 '''
+
+[[plugins]] # sudoでもvimrcを共有
+repo = 'vim-scripts/sudo.vim'

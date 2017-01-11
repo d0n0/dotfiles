@@ -23,9 +23,23 @@ source ~/dotfiles/zsh/common/docker_shortcuts
 # tmux scripts
 export PATH=$PATH:~/dotfiles/tmux/scripts
 
-# ディレクトリ移動後の処理
-function chpwd() {
+# ディレクトリ表示を簡略化
+# ex) /Home/user/hoge/fuga/ -> ~/h/fuga
+function save_short_pwd {
+  local pwd="${PWD/#$HOME/~}"
+
+  if [[ "$pwd" == (#m)[/~] ]]; then
+    short_pwd="$MATCH"
+    unset MATCH
+  else
+    short_pwd="${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
+  fi
+
   if [ -e ~/dotfiles/tmux/scripts/tmp/pwd.tmp ]; then
-    echo $PWD | sed -e "s|$HOME|~|" >! ~/dotfiles/tmux/scripts/tmp/pwd.tmp
+    echo $short_pwd >! ~/dotfiles/tmux/scripts/tmp/pwd.tmp
   fi
 }
+
+# ディレクトリ移動時にsave_short_pwdを実行
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd save_short_pwd

@@ -112,6 +112,10 @@ hook_source = '''
   source ~/dotfiles/nvim/rc/plugins/vim-go.rc.vim
 '''
 
+[[plugins]] # scroll
+repo = 'yuttie/comfortable-motion.vim'
+on_map = ['<C-d>', '<C-u>', '<C-f>', '<C-b>']
+
 # [[plugins]] # ローカルインストールしたESLintを使うためのプラグイン
 # repo = 'benjie/neomake-local-eslint.vim'
 # on_ft = ['javascript']
