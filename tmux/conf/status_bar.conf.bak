@@ -1,5 +1,5 @@
 # This tmux statusbar config was created by tmuxline.vim
-# on 水, 11  1 2017
+# on 日, 01  1 2017
 
 set -g status-bg "colour235"
 set -g message-command-fg "colour145"
@@ -23,6 +23,6 @@ setw -g window-status-activity-fg "colour39"
 setw -g window-status-separator ""
 setw -g window-status-bg "colour235"
 set -g status-left "#[fg=colour235,bg=colour39] #S #[fg=colour39,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour145,bg=colour237] #(cat ~/dotfiles/tmux/scripts/tmp/pwd.tmp) #[fg=colour237,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]"
-set -g status-right "#[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour145,bg=colour235] %Y-%m-%d(%a) %R#(display_period.sh) #[fg=colour237,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour145,bg=colour237] #(whoami) #[fg=colour39,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour235,bg=colour39] #h "
+set -g status-right "#[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour145,bg=colour235] %R#(display_period.sh) #[fg=colour237,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour145,bg=colour237] #(whoami) #[fg=colour39,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour235,bg=colour39] #h "
 setw -g window-status-format "#[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]#[default] #I #W #[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]"
 setw -g window-status-current-format "#[fg=colour235,bg=colour237,nobold,nounderscore,noitalics]#[fg=colour145,bg=colour237] #I #W #[fg=colour237,bg=colour235,nobold,nounderscore,noitalics]"

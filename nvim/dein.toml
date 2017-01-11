@@ -1,9 +1,6 @@
 [[plugins]] # dein
 repo = 'Shougo/dein.vim'
 
-[[plugins]] # カーソルの位置のコンテキストのftを判定するライブラリ
-repo = 'Shougo/context_filetype.vim'
-
 [[plugins]] # onedark-colorscheme
 repo = 'joshdick/onedark.vim'
 
