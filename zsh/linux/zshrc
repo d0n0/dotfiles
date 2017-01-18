@@ -4,3 +4,5 @@ source ~/dotfiles/zsh/common/zshrc
 # aliases
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
+
+export EDITOR=/usr/bin/vim
