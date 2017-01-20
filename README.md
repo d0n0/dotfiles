@@ -3,6 +3,9 @@
 ## Require
 - zsh
 - git
+- neovim
+- xclip or xsel(linux)
+- pbcopy(mac)
 - Cica(font)
 
 ## Note
