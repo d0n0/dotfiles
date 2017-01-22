@@ -5,7 +5,7 @@
 - git
 - neovim
 - xclip or xsel(linux)
-- pbcopy(mac)
+- pbcopy,reattach-to-user-namespace(mac)
 - Cica(font)
 
 ## Note
