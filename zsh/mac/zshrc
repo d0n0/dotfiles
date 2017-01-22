@@ -19,3 +19,6 @@ export PATH=$PATH:$GOPATH/bin
 
 # nodebrew
 export PATH=$PATH:$HOME/.nodebrew/current/bin
+
+# ctags
+alias ctags=/usr/local/Cellar/ctags/5.8_1/bin/ctags

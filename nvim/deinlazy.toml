@@ -2,6 +2,9 @@
 repo = 'ctrlpvim/ctrlp.vim'
 on_map = '<C-p>'
 
+[[plugins]] # カーソルの位置のコンテキストのftを判定するライブラリ
+repo = 'Shougo/context_filetype.vim'
+
 [[plugins]] # deoplete
 repo = 'Shougo/deoplete.nvim'
 if = 'has("python3")'
@@ -11,8 +14,26 @@ hook_source = '''
   let g:deoplete#enable_at_startup = 1
 '''
 
-[[plugins]] # カーソルの位置のコンテキストのftを判定するライブラリ
-repo = 'Shougo/context_filetype.vim'
+[[plugins]] # deoplete C/C++補完
+repo = 'zchee/deoplete-clang'
+on_ft = ['c','cpp']
+depends = 'deoplete.nvim'
+hook_source = '''
+  source ~/dotfiles/nvim/rc/plugins/deoplete-clang.rc.vim
+'''
+
+[[plugins]] # deoplete node.js補完(tern)
+repo = 'carlitux/deoplete-ternjs'
+if = 'has("python3")'
+on_ft = ['javascript','jsx','vue']
+depends = 'deoplete.nvim'
+hook_post_update = '''
+  let cmd = 'npm install -g tern'
+  let g:dein#plugin.build = cmd
+'''
+hook_source = '''
+  source ~/dotfiles/nvim/rc/plugins/deoplete-ternjs.rc.vim
+'''
 
 [[plugins]] # シンタックスチェックフレームワーク
 repo = 'neomake/neomake'
@@ -62,27 +83,6 @@ hook_source = '''
   set splitbelow
   set splitright
 '''
-
-[[plugins]] # deoplete node.js補完(tern)
-repo = 'carlitux/deoplete-ternjs'
-if = 'has("python3")'
-depends = 'deoplete.nvim'
-on_ft = ['javascript','jsx','vue']
-hook_post_update = '''
-  let cmd = 'npm install -g tern'
-  let g:dein#plugin.build = cmd
-'''
-hook_source = '''
-  source ~/dotfiles/nvim/rc/plugins/deoplete-ternjs.rc.vim
-'''
-
-[[plugins]] # deoplete C/C++補完
-repo = 'zchee/deoplete-clang'
-depends = 'deoplete.nvim'
-hook_source = '''
-  source ~/dotfiles/nvim/rc/plugins/deoplete-clang.rc.vim
-'''
-on_ft = ['c','cpp','cmake']
 
 [[plugins]] # Html5
 repo  = 'othree/html5.vim'
