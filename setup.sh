@@ -40,10 +40,12 @@ run() {
 
     # setup tmux ----------------------------------------------------------------
     if [ ! -e ~/.tmux/ ]; then
-        mkdir -p ~/.tmux
+        mkdir -p ~/.tmux/plugins
+    fi
+    if [ ! -e ~/.tmux/plugins/tpm ]; then
+      git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     fi
     ln -sf ~/dotfiles/tmux/conf/tmux.conf ~/.tmux.conf
-    ln -sfn ~/dotfiles/tmux/plugins ~/.tmux/plugins
 
     # end -----------------------------------------------------------------------
 

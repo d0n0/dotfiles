@@ -13,7 +13,10 @@ source ~/dotfiles/nvim/rc/plugins/dein.rc.vim
 if (has("termguicolors"))
   set termguicolors
 endif
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+if has('nvim')
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 colorscheme onedark
 
 " 不可視文字表示
