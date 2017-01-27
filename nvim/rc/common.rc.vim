@@ -7,7 +7,7 @@ source ~/dotfiles/nvim/rc/plugins/dein.rc.vim
 " set guifont=CicaE-Regular:h18
 
 " clipboard
-" set clipboard+=unnamedplus
+set clipboard+=unnamedplus
 
 " colorscheme
 if (has("termguicolors"))

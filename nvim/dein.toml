@@ -19,10 +19,16 @@ hook_add = '''
   source ~/dotfiles/nvim/rc/plugins/lightline.rc.vim
 '''
 
-[[plugins]] # 軽量ファイラ
-repo = 'justinmk/vim-dirvish'
+# [[plugins]] # 軽量ファイラ
+# repo = 'justinmk/vim-dirvish'
+# hook_add = '''
+#   source ~/dotfiles/nvim/rc/plugins/vim-dirvish.rc.vim
+# '''
+
+[[plugins]] # 軽量ファイラ+α
+repo = 'cocopon/vaffle.vim'
 hook_add = '''
-  source ~/dotfiles/nvim/rc/plugins/vim-dirvish.rc.vim
+  nnoremap <silent> Q :Vaffle<CR>
 '''
 
 [[plugins]] # sudoでもvimrcを共有
