@@ -9,6 +9,9 @@ source ~/dotfiles/nvim/rc/plugins/dein.rc.vim
 " clipboard
 set clipboard+=unnamedplus
 
+" メッセージを英語表記に設定
+language C
+
 " colorscheme
 if (has("termguicolors"))
   set termguicolors
