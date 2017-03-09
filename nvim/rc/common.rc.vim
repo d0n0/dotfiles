@@ -6,8 +6,10 @@ source ~/dotfiles/nvim/rc/plugins/dein.rc.vim
 " font
 " set guifont=CicaE-Regular:h18
 
-" clipboard
-set clipboard+=unnamedplus
+" clipboard共有
+" 有効化するとxでも字を削除した時の挙動が著しく重くなるため無効化
+"clipboard+=unnamedplus
+
 
 " メッセージを英語表記に設定
 language C
