@@ -105,8 +105,12 @@ repo = 'heavenshell/vim-jsdoc'
 on_ft = ['javascript']
 
 [[plugins]] # javascript-syntaxhighlight
-repo = 'othree/yajs.vim'
+repo = 'pangloss/vim-javascript'
 on_ft = ['javascript']
+
+[[plugins]] # jsx syntaxhighlight
+repo = 'maxmellon/vim-jsx-pretty'
+on_ft = ['javascript','jsx']
 
 [[plugins]] # Go development plugin
 repo = 'fatih/vim-go'
