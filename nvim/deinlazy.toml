@@ -119,7 +119,7 @@ hook_source = '''
   source ~/dotfiles/nvim/rc/plugins/vim-go.rc.vim
 '''
 
-[[plugins]] # scroll
+[[plugins]] # smooth-scroll
 repo = 'yuttie/comfortable-motion.vim'
 on_map = ['<C-d>', '<C-u>', '<C-f>', '<C-b>']
 
